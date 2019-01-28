@@ -6,63 +6,32 @@
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/index.css">
   <title>DatePicker</title>
+  <style>
+    .date-input {
+      margin: 1vh 0 0 0;
+      width: 48vw;
+      height: 2vw;
+      padding: 0 1vw;
+      border: 1px solid #666;
+      border-radius: 5px;
+    }
+    .date-input:focus {
+      outline: none;
+      border: 1px solid #00FF7F;
+    }
+  </style>
 </head>
 <body>
-  <div class="ui-datePicker-wrapper">
-    <div class="ui-datePicker-header">
-      <a href="#" class="ui-datePicker-btn ui-datePicker-prev">&lt;</a>
-      <a href="#" class="ui-datePicker-btn ui-datePicker-next">&gt;</a>
-      <span class="ui-datePicker-current-month">2019-01</span>
-    </div>
-    <div class="ui-datePicker-body">
-      <table>
-        <thead>
-          <tr>
-            <th>日</th>
-            <th>一</th>
-            <th>二</th>
-            <th>三</th>
-            <th>四</th>
-            <th>五</th>
-            <th>六</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>30</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
-            <td>13</td>
-          </tr>
-          <tr>
-            <td>14</td>
-            <td>15</td>
-            <td>16</td>
-            <td>17</td>
-            <td>18</td>
-            <td>19</td>
-            <td>20</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <input type="text" placeholder="请点击选择日期" class="date-input" />
+
+  <script src="./js/util.js"></script>
   <script src="./js/date.js"></script>
+  <script src="./js/main.js"></script>
   <script>
-    var data = pickerData.getMonthData();
-    console.log(data);
+    pickerData.init('.date-input');
+    window.onresize = function() {
+      pickerData.init('.date-input');
+    };
   </script>
 </body>
 </html>

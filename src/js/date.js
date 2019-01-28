@@ -1,5 +1,6 @@
 (function() {
   var pickerData = {};
+  var _monthDaysNumber = 7 * 6;
 
   pickerData.getMonthData = function(year, month) {
     var ret = [];
@@ -11,8 +12,10 @@
     }
 
     var firstDate = new Date(year, month - 1, 1);
-    var firstDateNumber = firstDate.getDate();
     var firstDateWeekDay = firstDate.getDay();
+
+    var year = firstDate.getFullYear();
+    var month = firstDate.getMonth() + 1;
 
     var lastDate = new Date(year, month, 0);
     var lastDateNumber = lastDate.getDate();
@@ -22,7 +25,7 @@
 
     var preLastMonthDayCount = firstDateWeekDay;
 
-    for (var i=1; i<=7 * 6; i++) {
+    for (var i=1; i<=_monthDaysNumber; i++) {
       var date = i - preLastMonthDayCount;
       var showDate = date;
       var currentMonth = month;
@@ -52,7 +55,11 @@
       });
     }
 
-    return ret;
+    return {
+      year: year,
+      month: month,
+      days: ret
+    };
   }
 
   window.pickerData = pickerData;
